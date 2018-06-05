@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule, // Enables ngModel directive
     HttpModule
   ],
   providers: [],
