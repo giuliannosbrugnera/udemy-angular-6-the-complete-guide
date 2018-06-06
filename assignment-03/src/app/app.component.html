@@ -10,4 +10,27 @@
       </ol>
     </div>
   </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onClickToggleParagraphDisplaying()">Display Details</button>
+      <p *ngIf="showParagraph">Secret Password = tuna</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngFor="let buttonClickLog of buttonClickLogList; let i = index">
+        <p
+          [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : ''}"
+          [ngClass]="{white: i >= 4}"> <!-- Key-Value pair: <class name, condition to apply class name> -->
+            {{ buttonClickLog }}
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
