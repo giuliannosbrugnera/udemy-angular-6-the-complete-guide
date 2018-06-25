@@ -5,18 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { GameControlComponent } from './game-control/game-control.component';
+import { OddComponent } from './odd/odd.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GameControlComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
+  declarations: [AppComponent, GameControlComponent, OddComponent],
+  imports: [BrowserModule, FormsModule, HttpModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
