@@ -6,8 +6,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./game-control.component.css']
 })
 export class GameControlComponent implements OnInit {
+  public disabled = false;
+
   private counter = 0;
-  private _disabled = false;
   private intervalID: NodeJS.Timer;
 
   // @Output makes the property listenable from the outside of the component
@@ -23,7 +24,7 @@ export class GameControlComponent implements OnInit {
    */
   public onGameStarting(): void {
     this.intervalID = setInterval(() => {
-      this._disabled = true;
+      this.disabled = true;
       this.numberIncremented.emit(this.counter++);
     }, 1000);
   }
@@ -33,10 +34,6 @@ export class GameControlComponent implements OnInit {
    */
   public onGameStopping() {
     clearInterval(this.intervalID);
-    this._disabled = false;
-  }
-
-  public get disabled(): boolean {
-    return this._disabled;
+    this.disabled = false;
   }
 }
