@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-control',
@@ -6,10 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-control.component.css']
 })
 export class GameControlComponent implements OnInit {
+  private counter = 0;
+  private intervalID: NodeJS.Timer;
 
-  constructor() { }
+  // @Output makes the property listenable from the outside of the component
+  @Output()
+  private numberIncremented: EventEmitter<number> = new EventEmitter<number>();
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnInit() {}
+
+  /**
+   * onGameStarting
+   */
+  public onGameStarting(): void {
+    this.intervalID = setInterval(
+      () => this.numberIncremented.emit(this.counter++),
+      1000
+    );
   }
-
 }
