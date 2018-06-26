@@ -26,8 +26,14 @@
     <div
       class="col-xs-12"
       *ngFor="let counter of counters">
-        <app-odd *ngIf="counter % 2 !== 0"></app-odd>
-        <app-even *ngIf="counter % 2 === 0"></app-even>
+        <app-odd
+          *ngIf="counter % 2 !== 0"
+          [oddNumber]="counter">
+        </app-odd>
+        <app-even
+          *ngIf="counter % 2 === 0"
+          [evenNumber]="counter">
+        </app-even>
     </div>
   </div>
 </div>
