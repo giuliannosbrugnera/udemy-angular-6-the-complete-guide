@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -6,12 +6,15 @@ import { UsersService } from '../services/users.service';
   templateUrl: './inactive-users.component.html',
   styleUrls: ['./inactive-users.component.css']
 })
-export class InactiveUsersComponent {
+export class InactiveUsersComponent implements OnInit {
   public users: string[];
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService) {}
+
+  // Good practice to initialize OnInit
+  ngOnInit() {
+    // Assignment by reference. Changes on UsersService will reflect to this.users
     this.users = this.usersService.inactiveUsers;
-    this.usersService.inactiveUsersUpdated.subscribe((inactiveUsers: string[]) => this.users = inactiveUsers);
   }
 
   onSetToActive(id: number) {
