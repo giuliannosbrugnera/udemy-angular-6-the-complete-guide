@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { LoggingService } from './logging.service';
 
@@ -19,6 +19,8 @@ export class AccountService {
       status: 'unknown'
     }
   ];
+
+  public statusUpdated: EventEmitter<string> = new EventEmitter<string>();
 
   // If you injecting a service into "something", this "something" must have some metadata (like Components have @Component)
   // Since this class represents an Angular Service, it must include the @Injectable metadata
