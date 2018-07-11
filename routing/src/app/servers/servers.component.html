@@ -10,6 +10,15 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
+    <!-- Absolute path, will always be appended to the root domain -->
+    <!-- <a routerLink="/servers">Reload Page</a> -->
+
+    <!-- Relative path, add it to the current loaded path -->
+    <!-- <a routerLink="servers">Reload Page</a> -->
+    <!-- <a routerLink="./servers">Reload Page</a> -->
+
+    <!-- Relative path, going back n paths -->
+    <!-- <a routerLink="../servers">Reload Page</a> -->
     <app-edit-server></app-edit-server>
     <hr>
     <app-server></app-server>
