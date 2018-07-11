@@ -12,11 +12,16 @@ export class ShoppingListService {
   ];
 
   public getIngredients(): Ingredient[] {
-    return this.ingredients.slice();
+    return [...this.ingredients]; // equivalent to this.ingredients.slice()
   }
 
   public addIngredient(ingredient: Ingredient): void {
     this.ingredients.push(ingredient);
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    this.ingredientsChanged.emit([...this.ingredients]);
+  }
+
+  public addIngredients(ingredients: Ingredient[]): void {
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit([...this.ingredients]);
   }
 }

@@ -1,11 +1,15 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class RecipeService {
   public recipeSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();
 
-  private _recipes: Recipe[] = [
+  private recipes: Recipe[] = [
     new Recipe(
       'Tasty Schnitzel',
       'A super-tasty Schnitzel',
@@ -26,9 +30,15 @@ export class RecipeService {
     )
   ];
 
+  constructor(private shoppingListService: ShoppingListService) {}
+
   // Return a new array which is an exact copy of this array
   // This prevents changes made outside from affecting the array instantiated here
-  get recipes(): Recipe[] {
-    return this._recipes.slice();
+  public getRecipes(): Recipe[] {
+    return [...this.recipes];
+  }
+
+  public addIngredientsToShoppingList(ingredients: Ingredient[]): void {
+    this.shoppingListService.addIngredients(ingredients);
   }
 }
