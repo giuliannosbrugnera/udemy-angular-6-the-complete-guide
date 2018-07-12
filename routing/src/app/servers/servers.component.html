@@ -13,7 +13,8 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
+    <router-outlet></router-outlet>
+    <!-- <button class="btn btn-primary" (click)="onReload()">Reload Page</button> -->
     <!-- Absolute path, will always be appended to the root domain -->
     <!-- <a routerLink="/servers">Reload Page</a> -->
 
@@ -23,8 +24,8 @@
 
     <!-- Relative path, going back n paths -->
     <!-- <a routerLink="../servers">Reload Page</a> -->
-    <app-edit-server></app-edit-server>
-    <hr>
+    <!-- <app-edit-server></app-edit-server> -->
+    <!-- <hr> -->
     <!-- <app-server></app-server> -->
   </div>
 </div>

@@ -15,11 +15,22 @@ import { ServersService } from './servers/servers.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id/:name', component: UserComponent }, // parameters: dynamic segments in the path
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent }
+  {
+    path: 'users',
+    component: UsersComponent,
+    children: [
+      { path: ':id/:name', component: UserComponent } // parameters: dynamic segments in the path
+    ]
+  },
+  {
+    path: 'servers',
+    component: ServersComponent,
+    children: [
+      // The children routes need a separate router-outlet (at servers.component.html)
+      { path: ':id', component: ServerComponent },
+      { path: ':id/edit', component: EditServerComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -41,4 +52,4 @@ const appRoutes: Routes = [
   providers: [ServersService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
