@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'servers',
-    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     component: ServersComponent,
     children: [
       // The children routes need a separate router-outlet (at servers.component.html)
