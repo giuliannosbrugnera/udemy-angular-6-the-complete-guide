@@ -18,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'users/:id/:name', component: UserComponent }, // parameters: dynamic segments in the path
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent },
   { path: 'servers/:id/edit', component: EditServerComponent }
 ];
 
