@@ -1,0 +1,3 @@
+li.dropdown > a, ul.dropdown-menu > li > a {
+  cursor: pointer;
+}
