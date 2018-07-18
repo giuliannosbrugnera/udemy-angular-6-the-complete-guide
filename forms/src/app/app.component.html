@@ -53,6 +53,19 @@
           </textarea>
         </div>
         <p>Your reply: {{ answer }}</p>
+        <div
+          class="radio"
+          *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              [value]="gender"
+              ngModel
+              required>
+              {{ gender }}
+          </label>
+        </div>
         <button
           class="btn btn-primary"
           type="submit"
