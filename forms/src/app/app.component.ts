@@ -1,6 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+class User {
+  username: string;
+  email: string;
+  secretQuestion: string;
+  answer: string;
+  gender: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +19,8 @@ export class AppComponent {
   public defaultQuestion = 'pet';
   public answer: string;
   public genders: string[] = ['male', 'female'];
+  public user: User = new User();
+  public submitted: boolean;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -38,6 +48,11 @@ export class AppComponent {
   //   console.log(form);
   // }
   public onSubmit(): void {
-    console.log(this.signupForm);
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.secretQuestion = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.questionAnswer;
+    this.user.gender = this.signupForm.value.gender;
+    this.submitted = true;
   }
 }
