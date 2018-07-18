@@ -14,6 +14,21 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // This method expects an exact representation of the form object
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // });
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    });
   }
 
   /**
