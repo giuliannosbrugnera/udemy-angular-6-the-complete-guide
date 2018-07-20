@@ -7,13 +7,14 @@ import { FormGroup, FormControl, Validators, FormArray, AbstractControl } from '
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  genders = ['male', 'female'];
   public signupForm: FormGroup;
+  public genders = ['male', 'female'];
+  private forbiddenUsernames = ['Chris', 'Ana'];
 
   ngOnInit() {
     this.signupForm = new FormGroup({
       'userData': new FormGroup({
-        'username': new FormControl(null, Validators.required),
+        'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         'email': new FormControl(null, [Validators.required, Validators.email]),
       }),
       'gender': new FormControl('male'),
@@ -38,5 +39,18 @@ export class AppComponent implements OnInit {
 
   get hobbyControls(): AbstractControl[] {
     return (<FormArray>this.signupForm.get('hobbies')).controls;
+  }
+
+  /**
+   * forbiddenNames
+   */
+  // [s: string] is Typescript syntax for saying that the key can be interpreted as string
+  forbiddenNames(control: FormControl): {[s: string]: boolean} {
+    if (this.forbiddenUsernames.some(_ => _ === control.value)) {
+      return {'nameIsForbidden': true};
+    }
+
+    // If validation is successful you should return null or omit the return
+    return null;
   }
 }
